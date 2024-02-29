@@ -1,5 +1,9 @@
-name: Test Project
-on: [push]
+name: Event Project Demo
+on:
+  pull_request:
+    types:
+      - opened
+  workflow_dispatch:
 jobs:
   lint:
     runs-on: ubuntu-latest
