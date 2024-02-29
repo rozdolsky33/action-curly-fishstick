@@ -1,10 +1,10 @@
-name: New Issue Was Opened
+name: Handle Issue
 on:
   issues:
     types: [opened]
 jobs:
-  issue:
+  output-info:
     runs-on: ubuntu-latest
     steps:
-      - name: Output Event Context
+      - name: Output Event Details
         run: echo "${{ toJSON(github.event) }}"
