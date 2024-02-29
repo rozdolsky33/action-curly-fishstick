@@ -1,0 +1,19 @@
+name: New Issue Was Opened
+on:
+  issues:
+    types: [opened]
+jobs:
+  issue:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dacbd/create-issue-action@main
+        id: new-issue
+        with:
+          token: ${{ github.token }}
+          title: Simple test issue
+          body: my new issue
+      - run: |
+          echo "${{ steps.new-issue.outputs.json }}" | jq
+          echo "${{ steps.new-issue.outputs.json }}" | jq .state
+          echo "${{ steps.new-issue.outputs.json }}" | jq .labels[].name
