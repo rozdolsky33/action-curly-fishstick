@@ -13,6 +13,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 21
+      - name: Cache dependencies
+        uses: actions/cache@4
+        with:
+          path: ~/.npm
+          key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
       - name: Install dependencies
         run: npm ci
       - name: Lint code
@@ -31,6 +36,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 21
+      - name: Cache dependencies
+        uses: actions/cache@4
+        with:
+          path: ~/.npm
+          key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
       - name: Install dependencies
         run: npm ci
       - name: Build website
